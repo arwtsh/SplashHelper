@@ -1,0 +1,36 @@
+{
+  "name": "com.jjasundry.splash-helper",
+  "version": "1.0.0",
+  "displayName": "Splash Helper",
+  "description": "A Unity package that assists with the splash screen and initial loading logic.",
+  "unity": "6000.0",
+  "documentationUrl": "https://github.com/arwtsh/SplashHelper/blob/main/Documentation~/splash-helper.md",
+  "changelogUrl": "https://github.com/arwtsh/SplashHelper/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/arwtsh/SplashHelper/blob/main/LICENSE.MD",
+  "dependencies": {
+    "com.hextantstudios.utilities": "0.1.1",
+    "com.eflatun.scenereference": "4.1.1",
+    "com.cysharp.unitask": "2.5.10",
+    "com.jjasundry.scene-loading": "1.0.0"
+  },
+  "keywords": [
+    "Splash",
+    "Screen",
+    "Load",
+    "Intro"
+  ],
+  "author": {
+    "name": "Adam White",
+    "email": "jjasundry+gamedev@gmail.com",
+    "url": "https://www.linkedin.com/in/adamwhite302/"
+  },
+  "hideInEditor": "false",
+  "license": "CC-BY-4.0",
+  "samples": [
+    {
+      "displayName": "Splash Example",
+      "description": "An example splash screen that displays a name and logo with animations and audio.",
+      "path": "Samples~/Splash"
+    }
+  ]
+}

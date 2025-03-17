@@ -1,0 +1,16 @@
+{
+    "name": "SplashHelpter.Samples.JJASundry",
+    "rootNamespace": "SplashHelpter.Samples.JJASundry",
+    "references": [
+        "GUID:a6e607d9ca852cf4794a232c4c552dd2"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,25 @@
+{
+    "name": "SplashHelper",
+    "rootNamespace": "SplashHelper",
+    "references": [
+        "GUID:5cb2ec59697a4f9438a8f30dc412b4a9",
+        "GUID:caca889fed6088d40b22c2d7e2909c31",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:da253731328557e4f94e89491bee3242"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "Select...",
+            "expression": "",
+            "define": ""
+        }
+    ],
+    "noEngineReferences": false
+}

@@ -1,0 +1,21 @@
+{
+    "name": "SplashHelperEditor",
+    "rootNamespace": "SplashHelper.Editor",
+    "references": [
+        "GUID:a6e607d9ca852cf4794a232c4c552dd2",
+        "GUID:6ec20d7bf46e38347a93da7ecf751332",
+        "GUID:5cb2ec59697a4f9438a8f30dc412b4a9",
+        "GUID:caca889fed6088d40b22c2d7e2909c31"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
