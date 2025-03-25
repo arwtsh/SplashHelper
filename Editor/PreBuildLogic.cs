@@ -58,7 +58,7 @@ namespace SplashHelper.Editor
                 }
 
 
-                if (SplashHelperConfig.instance != null && SplashHelperConfig.instance.FirstScene)
+                if (SplashHelperConfig.instance != null && SplashHelperConfig.instance.FirstScene != null)
                 {
                     int index = SceneUtility.GetBuildIndexByScenePath(SplashHelperConfig.instance.FirstScene.Path);
                     if (index < 0) // Not in build
