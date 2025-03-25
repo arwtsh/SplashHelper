@@ -5,6 +5,7 @@ using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
 using Eflatun.SceneReference;
+using UnityEngine.SceneManagement;
 
 namespace SplashHelper.Editor
 {
@@ -35,26 +36,41 @@ namespace SplashHelper.Editor
                     EditorBuildSettings.scenes = newSceneList.ToArray();
                 }
 
+                //Force the black screen to be enabled
+                EditorBuildSettings.scenes[0].enabled = true;
+
                 //Find which splash screen the project is using and add it
                 SceneReference splashScene = (SplashHelperConfig.instance != null && SplashHelperConfig.instance.UseBuiltInSplashScreen) ?
                     SplashHelperScenes.GetUnitySplashReference() :
                     SplashHelperConfig.instance.SplashScreen;
-                if (splashScene != null && splashScene.UnsafeReason == SceneReferenceUnsafeReason.NotInBuild)
+                if(splashScene != null)
                 {
-                    List<EditorBuildSettingsScene> scenes = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
-                    scenes.Add(new EditorBuildSettingsScene(splashScene.Path, true));
-                    EditorBuildSettings.scenes = scenes.ToArray();
+                    int index = SceneUtility.GetBuildIndexByScenePath(splashScene.Path);
+                    if(index < 0) // Not in build
+                    {
+                        List<EditorBuildSettingsScene> scenes = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
+                        scenes.Add(new EditorBuildSettingsScene(splashScene.Path, true));
+                        EditorBuildSettings.scenes = scenes.ToArray();
+                    }
+
+                    //Force the splash screen to be enabled.
+                    EditorBuildSettings.scenes[index].enabled = true;
                 }
 
 
-                if (SplashHelperConfig.instance != null && SplashHelperConfig.instance.FirstScene != null && SplashHelperConfig.instance.FirstScene.UnsafeReason == SceneReferenceUnsafeReason.NotInBuild)
+                if (SplashHelperConfig.instance != null && SplashHelperConfig.instance.FirstScene)
                 {
-                    List<EditorBuildSettingsScene> scenes = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
-                    scenes.Add(new EditorBuildSettingsScene(SplashHelperConfig.instance.FirstScene.Path, true));
-                    EditorBuildSettings.scenes = scenes.ToArray();
+                    int index = SceneUtility.GetBuildIndexByScenePath(SplashHelperConfig.instance.FirstScene.Path);
+                    if (index < 0) // Not in build
+                    {
+                        List<EditorBuildSettingsScene> scenes = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
+                        scenes.Add(new EditorBuildSettingsScene(SplashHelperConfig.instance.FirstScene.Path, true));
+                        EditorBuildSettings.scenes = scenes.ToArray();
+                    }
+
+                    //Force the first scene to be enabled.
+                    EditorBuildSettings.scenes[index].enabled = true;
                 }
-
-
             }
             catch (System.Exception ex)
             {
