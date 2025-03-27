@@ -1,14 +1,24 @@
 # Changelog
 
-## v1.0.1 (3/25/2025)
+## v1.0.1 (3/27/2025)
 
 ### Summary
 
-The pre-build logic now forces the scenes to be enabled in the build settings in addition to adding them if they're missing.
+Minor changes to build automation, fixing aspect ratio of sample splash screen and making it WebGL compatable.
+
+## Added
+
+- Auto-adding startup scenes to the build also makes them enabled if they were disabled.
+
+## Changed 
+
+- The example splash screen provided in the sample will now scale to the width of the screen. This means the window can get very skinny and the splash is still completely visible.
 
 ## Fixed
 
-- Auto-adding startup scenes to the build also makes them enabled if they were disabled.
+- The sample screen used a Reverb Filter component to add reverb to the `logoBurnIn.wav` audio file. WebGL does not support that component but doesn't throw an error. The reverb has been baked into the audio file instead.
+
+- Does not find methods marked as CallMethodOnSplashAttribute on a seperate thread in WebGL builds (it will hang the application).
 
 ## v1.0.0 (3/15/2025)
 

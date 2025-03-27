@@ -1,6 +1,6 @@
 {
   "name": "com.jjasundry.splash-helper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "Splash Helper",
   "description": "A Unity package that assists with the splash screen and initial loading logic.",
   "unity": "6000.0",
