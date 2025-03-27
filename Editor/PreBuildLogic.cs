@@ -5,6 +5,7 @@ using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
 using Eflatun.SceneReference;
+using System.IO;
 using UnityEngine.SceneManagement;
 
 namespace SplashHelper.Editor
@@ -18,7 +19,7 @@ namespace SplashHelper.Editor
             try
             {
                 //Force the BlackScreen to be the first scene in the build settigns so it is always loaded first in builds.
-                if (!EditorBuildSettings.scenes[0].path.Equals(SplashHelperConfig.blackScreenPath))
+                if (!EditorBuildSettings.scenes[0].path.Equals(SplashHelperConfig.blackScreenPath) || !EditorBuildSettings.scenes[0].enabled)
                 {
                     Debug.Log("Adding BlackScreen to the first of the Build Settings scene list.");
 
@@ -36,9 +37,6 @@ namespace SplashHelper.Editor
                     EditorBuildSettings.scenes = newSceneList.ToArray();
                 }
 
-                //Force the black screen to be enabled
-                EditorBuildSettings.scenes[0].enabled = true;
-
                 //Find which splash screen the project is using and add it
                 SceneReference splashScene = (SplashHelperConfig.instance != null && SplashHelperConfig.instance.UseBuiltInSplashScreen) ?
                     SplashHelperScenes.GetUnitySplashReference() :
@@ -52,9 +50,13 @@ namespace SplashHelper.Editor
                         scenes.Add(new EditorBuildSettingsScene(splashScene.Path, true));
                         EditorBuildSettings.scenes = scenes.ToArray();
                     }
-
-                    //Force the splash screen to be enabled.
-                    EditorBuildSettings.scenes[index].enabled = true;
+                    else if (!EditorBuildSettings.scenes[index].enabled)
+                    {
+                        //Force the splash screen to be enabled.
+                        List<EditorBuildSettingsScene> scenes = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
+                        scenes[index].enabled = true;
+                        EditorBuildSettings.scenes = scenes.ToArray();
+                    }
                 }
 
 
@@ -67,9 +69,13 @@ namespace SplashHelper.Editor
                         scenes.Add(new EditorBuildSettingsScene(SplashHelperConfig.instance.FirstScene.Path, true));
                         EditorBuildSettings.scenes = scenes.ToArray();
                     }
-
-                    //Force the first scene to be enabled.
-                    EditorBuildSettings.scenes[index].enabled = true;
+                    else if (!EditorBuildSettings.scenes[index].enabled)
+                    {
+                        //Force the first scene to be enabled.
+                        List<EditorBuildSettingsScene> scenes = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
+                        scenes[index].enabled = true;
+                        EditorBuildSettings.scenes = scenes.ToArray();
+                    }
                 }
             }
             catch (System.Exception ex)
