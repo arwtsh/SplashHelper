@@ -104,8 +104,12 @@ namespace SplashHelper
             Debug.Log("Calling Load methods.");
 
             //Find all the methods that should be invoked for game loading.
+        #if !UNITY_WEBGL	
             //The function should be safe to execute on a background thread because it doesn't use any unity-specific API calls.
             List<MethodInfo> loadMethods = await UniTask.RunOnThreadPool(ReflectionUtils.FindMethodsWithAttribute<CallMethodOnSplashAttribute>);
+        #else
+            List<MethodInfo> loadMethods = ReflectionUtils.FindMethodsWithAttribute<CallMethodOnSplashAttribute>();
+        #endif
 
             List<UniTask> results = new List<UniTask>();
 
